@@ -29,6 +29,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="AutomationProperties.Name" Value="{Binding HeaderText, RelativeSource={RelativeSource Self}, StringFormat=View Source Code for {0}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ControlExample}">
@@ -60,7 +61,7 @@
 
                         <Expander
                             Grid.Row="2"
-                            AutomationProperties.Name="{Binding HeaderText, RelativeSource={RelativeSource TemplatedParent}, StringFormat=View Source Code for {0}}"
+                            AutomationProperties.Name="{Binding Path=(AutomationProperties.Name), RelativeSource={RelativeSource TemplatedParent}}"
                             Header="Source code">
                             <StackPanel>
                                 <StackPanel x:Name="XamlCodeBlock">
@@ -123,7 +124,7 @@
                                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                             Text="C#" />
 
-                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CSharpCode" FocusManager.IsFocusScope="True" >
+                                        <Button Grid.Column="1" Padding="8" Command="ApplicationCommands.Copy" CommandParameter="Copy_CSharpCode" FocusManager.IsFocusScope="True" ToolTipService.ToolTip="Copy to clipboard" AutomationProperties.Name="Copy C# Code" >
                                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;" />
                                         </Button>
                                     </Grid>
